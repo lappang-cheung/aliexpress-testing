@@ -1,4 +1,8 @@
 <script setup>
+
+  import { useUserStore } from '~/store/user'
+  const userStore = useUserStore()
+
   let isAccountMenu = ref(false)
   let searchItem = ref('')
   let isSearching = ref(false)
