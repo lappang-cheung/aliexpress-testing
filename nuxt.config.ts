@@ -9,6 +9,9 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     // '@nuxtjs/supabase'
   ],
+  build: {
+    transpile: ['pinia-plugin-persistedstate'],
+  },
   runtimeConfig: {
     public: {
       stripePk: process.env.STRIPE_PK_KEY
