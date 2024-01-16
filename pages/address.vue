@@ -1,4 +1,5 @@
 <script setup>
+import MainLayout from '~/layouts/MainLayout.vue'
 import { useUserStore } from '~/store/user'
 const userStore = useUserStore()
 
@@ -12,6 +13,49 @@ let currentAddress = ref(null)
 let isUpdate = ref(false)
 let isWorking = ref(false)
 let error = ref(null)
+
+const submit = async() => {
+  isWorking.value = true
+  error.value = null
+
+  if (!contactName.value) {
+    error.value = {
+      type: 'contactName',
+      message: 'A contact name is required'
+    }
+  } else if (!address.value) {
+    error.value = {
+      type: 'address',
+      message: 'An address is required'
+    }
+  } else if (!zipCode.value) {
+    error.value = {
+      type: 'zipCode',
+      message: 'A zip code is required'
+    }
+  } else if (!city.value) {
+    error.value = {
+      type: 'city',
+      message: 'A city is required'
+    }
+  } else if (!country.value) {
+    error.value = {
+      type: 'country',
+      message: 'A country is required'
+    }
+  }
+
+  if (error.value) {
+    isWorking.value = false
+    return
+  }
+
+  // MORE HERE
+}
+
+watchEffect(() => {
+  userStore.isLoading = false
+})
 </script>
 
 <template>
@@ -28,7 +72,7 @@ let error = ref(null)
               placeholder="Contact Name"
               v-model:input="contactName"
               inputType="text"
-              :error="error && error.type == 'contactName' ? error.message : ''"
+              :error="error && error.type === 'contactName' ? error.message : ''"
           />
 
           <TextInput
