@@ -1,18 +1,19 @@
 <script setup>
-// const client = useSupabaseClient()
-// const user = useSupabaseUser()
-//
+const client = useSupabaseClient()
+const user = useSupabaseUser()
+
 // watchEffect(() => {
 //   if (user.value) {
 //     return navigateTo('/')
 //   }
 // })
-  const login = async(prov) => {
-    const { data, error } = await client.auth.signInWithOAuth({
-      provider: prov,
-      redirectTo: window.location.origin
-    })
-  }
+
+const login = async(prov) => {
+  const { data, error } = await client.auth.signInWithOAuth({
+    provider: prov,
+    redirectTo: window.location.origin
+  })
+}
 </script>
 
 <template>
@@ -24,7 +25,7 @@
     </div>
 
     <div class="max-w-[400px] mx-auto px-2">
-
+    {{user}}
       <div class="text-center my-6">Login / Register</div>
 
       <button
