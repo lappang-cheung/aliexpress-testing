@@ -13,6 +13,9 @@ export default defineNuxtConfig({
     transpile: ['pinia-plugin-persistedstate'],
   },
   runtimeConfig: {
+    secret: {
+      stripe: process.env.STRIPE_SK_KEY
+    },
     public: {
       stripePk: process.env.STRIPE_PK_KEY
     }
