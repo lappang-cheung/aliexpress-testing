@@ -1,5 +1,5 @@
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 export default defineEventHandler(async (event) => {
   let orders = await prisma.orders.findMany({
@@ -8,11 +8,10 @@ export default defineEventHandler(async (event) => {
     include: {
       orderItem: {
         include: {
-          product: true
-        }
-      }
-
-    }
-  })
-  return orders
-})
+          product: true,
+        },
+      },
+    },
+  });
+  return orders;
+});

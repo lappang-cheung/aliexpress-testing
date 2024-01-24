@@ -1,12 +1,12 @@
 // stores/counter.js
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
-export const useUserStore = defineStore('user', {
+export const useUserStore = defineStore("user", {
   state: () => ({
     isMenuOverlay: false,
     isLoading: false,
     cart: [],
-    checkout: []
+    checkout: [],
   }),
-  persist: true
-})
+  persist: true,
+});
